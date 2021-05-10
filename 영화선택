@@ -1,0 +1,413 @@
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int choose(0);
+	int check(0);
+	int row(0);
+	int col(0);
+	int a[3][10] = { 0 };
+	int b[3][10] = { 0 };
+	int c[3][10] = { 0 };
+	string name[4] = { "다들", "앞으로도", "파이팅!", "영화 선택 종료" };
+	string select[3] = { "좌석 예약", "예약 취소", "예약 종료" };
+
+		do {
+			cout << "******************SWING CINEMA 오늘의 영화****************" << endl;
+
+			for (int i = 0; i < 4; i++)
+				cout << i + 1 << ". " << name[i] << endl;
+			cout << "영화를 선택하세요 (1,2,3)";
+			cin >> choose;
+			
+			do {
+				if (choose == 1)
+				{
+
+					cout << "다음 중 선택해주세요." << endl;
+					for (int i = 0; i < 3; i++)
+						cout << i + 1 << ". " << select[i] << endl;
+					cin >> check;
+
+					if (check == 1) {
+						cout << "현재의 좌석은 다음과 같습니다" << endl;
+						cout << "---------------------------------------" << endl;
+						cout << "1 2 3 4 5 6 7 8 9 10" << endl;
+						cout << "---------------------------------------" << endl;
+						for (int i = 0; i < 3; ++i)
+						{
+							for (int k = 0; k < 10; ++k)
+							{
+								cout << a[i][k] << " ";
+							}
+							cout << endl;
+						}
+						cout << endl;
+						while (1) {
+							cout << "몇 열, 몇 번째 좌석을 예약하시겠습니까?";
+							row = 0;
+							col = 0;
+							cin >> row >> col;
+							cout << endl;
+
+							if (a[row - 1][col - 1] == 0)
+							{
+								cout << "예약되었습니다." << endl;
+								cout << "---------------------------------------" << endl;
+								cout << "1 2 3 4 5 6 7 8 9 10" << endl;
+								cout << "---------------------------------------" << endl;
+
+								a[row - 1][col - 1] = 1;
+								for (int i = 0; i < 3; ++i)
+								{
+									for (int k = 0; k < 10; ++k)
+									{
+										cout << a[i][k] << " ";
+									}
+									cout << endl;
+								}
+								break;
+							}
+
+							else
+							{
+								cout << "이미 예약된 자리입니다." << endl;
+							}
+							continue;
+						}
+						
+					}
+					else if (check == 2) {
+						cout << "현재의 예약된 좌석 현황" << endl;
+						cout << "---------------------------------------" << endl;
+						cout << "1 2 3 4 5 6 7 8 9 10" << endl;
+						cout << "---------------------------------------" << endl;
+						for (int i = 0; i < 3; ++i)
+						{
+							for (int k = 0; k < 10; ++k)
+							{
+								cout << a[i][k] << " ";
+							}
+							cout << endl;
+						}
+						cout << endl;
+						while (1) {
+							cout << "몇 열, 몇 번째 좌석을 예약 취소하시겠습니까?";
+							row = 0;
+							col = 0;
+							cin >> row >> col;
+							cout << endl;
+
+							if (a[row - 1][col - 1] == 1)
+							{
+								cout << "예약 취소 되었습니다." << endl;
+								cout << "---------------------------------------" << endl;
+								cout << "1 2 3 4 5 6 7 8 9 10" << endl;
+								cout << "---------------------------------------" << endl;
+
+								a[row - 1][col - 1] = 0;
+								for (int i = 0; i < 3; ++i)
+								{
+									for (int k = 0; k < 10; ++k)
+									{
+										cout << a[i][k] << " ";
+									}
+									cout << endl;
+								}
+								break;
+							}
+
+							else
+							{
+								cout << "예약되지 않은 자리입니다." << endl;
+							}
+							continue;
+
+						}
+						
+					}
+					else if (check == 3) {
+
+						cout << endl;
+						cout << "[ " << name[0] << " ] 좌석 예약 종료" << endl;
+
+						break;
+					}
+
+				}
+
+			
+			
+
+			else if (choose == 2)
+			{
+
+				cout << "다음 중 선택해주세요." << endl;
+				for (int i = 0; i < 3; i++)
+					cout << i + 1 << ". " << select[i] << endl;
+				cin >> check;
+
+				if (check == 1) {
+					cout << "현재의 좌석은 다음과 같습니다" << endl;
+					cout << "---------------------------------------" << endl;
+					cout << "1 2 3 4 5 6 7 8 9 10" << endl;
+					cout << "---------------------------------------" << endl;
+					for (int i = 0; i < 3; ++i)
+					{
+						for (int k = 0; k < 10; ++k)
+						{
+							cout << b[i][k] << " ";
+						}
+						cout << endl;
+					}
+					cout << endl;
+					while (1) {
+						cout << "몇 열, 몇 번째 좌석을 예약하시겠습니까?";
+						row = 0;
+						col = 0;
+						cin >> row >> col;
+						cout << endl;
+
+						if (b[row - 1][col - 1] == 0)
+						{
+							cout << "예약되었습니다." << endl;
+							cout << "---------------------------------------" << endl;
+							cout << "1 2 3 4 5 6 7 8 9 10" << endl;
+							cout << "---------------------------------------" << endl;
+
+							b[row - 1][col - 1] = 1;
+							for (int i = 0; i < 3; ++i)
+							{
+								for (int k = 0; k < 10; ++k)
+								{
+									cout << b[i][k] << " ";
+								}
+								cout << endl;
+							}
+							break;
+						}
+
+						else
+						{
+							cout << "이미 예약된 자리입니다." << endl;
+						}
+						continue;
+
+					}
+				
+				}
+				else if (check == 2) {
+					cout << "현재의 예약된 좌석 현황" << endl;
+					cout << "---------------------------------------" << endl;
+					cout << "1 2 3 4 5 6 7 8 9 10" << endl;
+					cout << "---------------------------------------" << endl;
+					for (int i = 0; i < 3; ++i)
+					{
+						for (int k = 0; k < 10; ++k)
+						{
+							cout << b[i][k] << " ";
+						}
+						cout << endl;
+					}
+					cout << endl;
+					while (1) {
+						cout << "몇 열, 몇 번째 좌석을 예약 취소하시겠습니까?";
+						row = 0;
+						col = 0;
+						cin >> row >> col;
+						cout << endl;
+
+						if (b[row - 1][col - 1] == 1)
+						{
+							cout << "예약 취소 되었습니다." << endl;
+							cout << "---------------------------------------" << endl;
+							cout << "1 2 3 4 5 6 7 8 9 10" << endl;
+							cout << "---------------------------------------" << endl;
+
+							b[row - 1][col - 1] = 0;
+							for (int i = 0; i < 3; ++i)
+							{
+								for (int k = 0; k < 10; ++k)
+								{
+									cout << b[i][k] << " ";
+								}
+								cout << endl;
+							}
+							break;
+						}
+
+						else
+						{
+							cout << "예약되지 않은 자리입니다." << endl;
+						}
+						continue;
+					}
+			
+				}
+				else if (check == 3) {
+					cout << endl;
+					cout << "[ " << name[1] << " ] 좌석 예약 종료" << endl;
+
+					break;
+				}
+
+			}
+
+			else if (choose == 3)
+			{
+
+				cout << "다음 중 선택해주세요." << endl;
+				for (int i = 0; i < 3; i++)
+					cout << i + 1 << ". " << select[i] << endl;
+				cin >> check;
+
+				if (check == 1) {
+					cout << "현재의 좌석은 다음과 같습니다" << endl;
+					cout << "---------------------------------------" << endl;
+					cout << "1 2 3 4 5 6 7 8 9 10" << endl;
+					cout << "---------------------------------------" << endl;
+					for (int i = 0; i < 3; ++i)
+					{
+						for (int k = 0; k < 10; ++k)
+						{
+							cout << c[i][k] << " ";
+						}
+						cout << endl;
+					}
+					cout << endl;
+					
+					while (1) {
+						cout << "몇 열, 몇 번째 좌석을 예약하시겠습니까?";
+						row = 0;
+						col = 0;
+						cin >> row >> col;
+						cout << endl;
+
+						if (c[row - 1][col - 1] == 0)
+						{
+							cout << "예약되었습니다." << endl;
+							cout << "---------------------------------------" << endl;
+							cout << "1 2 3 4 5 6 7 8 9 10" << endl;
+							cout << "---------------------------------------" << endl;
+
+							c[row - 1][col - 1] = 1;
+							for (int i = 0; i < 3; ++i)
+							{
+								for (int k = 0; k < 10; ++k)
+								{
+									cout << c[i][k] << " ";
+								}
+								cout << endl;
+							}
+							break;
+						}
+
+						else
+						{
+							cout << "이미 예약된 자리입니다." << endl;
+						}
+						continue;
+					}
+			
+				}
+				else if (check == 2) {
+					cout << "현재의 예약된 좌석 현황" << endl;
+					cout << "---------------------------------------" << endl;
+					cout << "1 2 3 4 5 6 7 8 9 10" << endl;
+					cout << "---------------------------------------" << endl;
+					for (int i = 0; i < 3; ++i)
+					{
+						for (int k = 0; k < 10; ++k)
+						{
+							cout << c[i][k] << " ";
+						}
+						cout << endl;
+					}
+					cout << endl;
+					while (1) {
+						cout << "몇 열, 몇 번째 좌석을 예약 취소하시겠습니까?";
+						row = 0;
+						col = 0;
+						cin >> row >> col;
+						cout << endl;
+
+						if (c[row - 1][col - 1] == 1)
+						{
+							cout << "예약 취소 되었습니다." << endl;
+							cout << "---------------------------------------" << endl;
+							cout << "1 2 3 4 5 6 7 8 9 10" << endl;
+							cout << "---------------------------------------" << endl;
+
+							c[row - 1][col - 1] = 0;
+							for (int i = 0; i < 3; ++i)
+							{
+								for (int k = 0; k < 10; ++k)
+								{
+									cout << c[i][k] << " ";
+								}
+								cout << endl;
+							}
+							break;
+						}
+						else
+						{
+							cout << "예약되지 않은 자리입니다." << endl;
+						}
+						continue;
+					}
+				}
+				else if (check == 3) {
+					cout << endl;
+					cout << "[ " << name[2] << " ] 좌석 예약 종료" << endl;
+
+					break;
+				}
+
+			}
+
+
+			else if (choose == 4) {
+				int count = 0;
+				
+					cout << "***********************SWING CINEMA 예약된 좌석 전체 현황***********************" << endl;
+					cout << "----------------------------" << name[0] <<"----------------------------------"<< endl;
+					for (int i = 0; i < 3; ++i)
+					{
+						for (int k = 0; k < 10; ++k)
+						{
+							cout << a[i][k] << " ";
+						}
+						cout << endl;
+					}
+					cout << "----------------------------" << name[1] << "----------------------------------" << endl;
+					for (int i = 0; i < 3; ++i)
+					{
+						for (int k = 0; k < 10; ++k)
+						{
+							cout << b[i][k] << " ";
+						}
+						cout << endl;
+					}	
+					cout << "----------------------------" << name[2] << "----------------------------------" << endl;
+					for (int i = 0; i < 3; ++i)
+					{
+						for (int k = 0; k < 10; ++k)
+						{
+							cout << c[i][k] << " ";
+						}
+						cout << endl;
+					}
+					
+					cout << "SWING CINEMA를 이용해주셔서 감사합니다. \n안녕히가세요.";
+					break;
+					
+				}
+			} while (check != 0);
+
+		} while (choose != 4);
+
+
+		return 0;
+}
