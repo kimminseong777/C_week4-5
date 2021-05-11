@@ -1,2 +1,57 @@
 
 
+#include<iostream>
+using namespace std;
+
+class Area {
+public:
+	int x=0;
+	int y=0;
+	int getA();
+	int getB();
+	int set();
+	double area();
+	Area();
+	Area(int a, int b);
+};
+
+int Area::getA(){
+	return x;
+}
+
+int Area::getB(){
+	return y;
+}
+
+int Area::set() {
+	x = 10;
+	y = 20;
+	return x, y;
+}
+
+double Area::area() {
+	return (x * y * 3.14);
+}
+
+Area::Area() {
+	cout << "Ovel 소멸 : width = " << x << " height = " << y << endl;// set 값이 출력 되지 않고 넘어가서 0으로 오류가 발생하는 데 어떻게 해야할 지 모르겠다..
+}
+
+Area::Area(int a, int b) {
+
+	cout << "Ovel 소멸 : width = " << a << " height = " << b << endl;
+}
+
+int main() {
+	
+	Area a;
+	Area b(3, 4);
+	
+	double Area = b.area();
+	Area = a.area();
+
+	cout << "타원의 넓이는 " << Area << "이다" << endl; // set() 안에 x와 y 값이 있는데, 이 값이 area 안 return 값에 적용이 되지 않아서 초기값인 0으로 계산이 되는데 어떻게 수정해야할 지 모르겠다..
+	cout << "타원의 넓이는 " << Area << "이다" << endl; //
+	
+	return 0;
+}
