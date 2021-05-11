@@ -1,0 +1,48 @@
+#include<iostream>
+#include<cstdlib> // c++ 헤더로 c 표준 라이브러리에 stdlib.h 로 사용된다. abort(), exit() 등 함수를 포함하고 있는 라이브러리이다.
+#include<ctime>  // time(),localtime(), ctime(),asctime() 함수 등 시간을 다루는 함수들이 ctime 헤더 파일 안에 존재한다.
+using namespace std;
+
+class random {
+public:
+	random();
+	int next();
+	int nextInRange(int a, int b);
+};
+
+random::random() {
+	srand((unsigned)time(NULL)); // seedrandom의 약자로 난수 발생 초기화 
+	
+}
+
+int random::next() {
+	return (rand()/2)*2; // rand 함수를 2로 나눈 다음 2를 곱한다.
+}
+
+int random::nextInRange(int a, int b) {
+	return (rand()%(b-a+1)+a); // rand 함수를 범위 최대값에서 범위 최소값을 빼고 1을 더한 정수로 나눈 후 범위 최소값을 더한다.
+}
+
+int main() {
+	random num; // 매개 변수 없는 생성자 호출
+	int random[10] = {0};
+
+	cout << "--0에서" << RAND_MAX << "까지의 짝수 랜덤 정수 10개--" << endl;
+	for (int i = 0; i < 10; i++) {
+		int n = num.next();
+		cout << n << " ";
+	}
+	cout << endl;
+	cout << "==2에서 30까지의 홀수 랜덤 정수 10개(단, 중복되는 값이 없어야 함)==" << endl;
+	
+	for (int i = 0; i < 10; i++) {
+		random[i] = num.nextInRange(2,30);
+		if (random[i] % 2 == 0) {
+			random[i] += 1;
+		}
+	}
+	for (int i = 0; i < 10; i++)
+		cout << random[i] << " ";
+	
+	return 0;
+}
